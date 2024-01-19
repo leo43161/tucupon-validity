@@ -29,6 +29,21 @@ const ConsultaDB = ({ inputValue, closeModal, visible }) => {
         }
     };
 
+    function convertDate(fecha) {
+        // Crear un objeto Date a partir de la cadena de fecha
+        const fechaObjeto = new Date(fecha);
+      
+        // Obtener día, mes y año
+        const dia = fechaObjeto.getDate();
+        const mes = fechaObjeto.getMonth() + 1; // Los meses en JavaScript son 0-indexados
+        const anio = fechaObjeto.getFullYear();
+      
+        // Formatear la fecha como "dd/mm/yyyy"
+        const fechaFormateada = `${dia.toString().padStart(2, '0')}/${mes.toString().padStart(2, '0')}/${anio}`;
+      
+        return fechaFormateada;
+      }
+
     /* const burnHandler = async () => {
         try {
             const response = await axios.post(
@@ -93,7 +108,7 @@ const ConsultaDB = ({ inputValue, closeModal, visible }) => {
                             </View>
                             <View style={styles.vencContain}>
                                 <Text style={styles.textVencTitle}>Vencimiento:</Text>
-                                <Text style={styles.textVenc}>{data.fechaVenc}</Text>
+                                <Text style={styles.textVenc}>{convertDate(data.fechaVenc)}</Text>
                             </View>
 
                             <View style={styles.hr}></View>
