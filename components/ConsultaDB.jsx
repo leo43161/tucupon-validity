@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, Modal, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 
-const ConsultaDB = ({ inputValue, closeModal, visible }) => {
+const ConsultaDB = ({ inputValue, closeModal, visible, setInputValue }) => {
     const [data, setData] = useState(null);
     const [load, setLoad] = useState(false);
     const [error, setError] = useState(false);
@@ -23,10 +23,11 @@ const ConsultaDB = ({ inputValue, closeModal, visible }) => {
             setLoad(false);
         } catch (error) {
             setError(true);
-            setMsgError("Hubo un error al intentar consultar el cupon, inténtelo más tarde");
+            setMsgError("Hubo un error al intentar consultar el cupon, inténtelo en unos minutos");
             console.error('Error al consultar la base de datos', error);
             setLoad(false);
         }
+        setInputValue("");
     };
 
     function convertDate(fecha) {

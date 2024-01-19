@@ -63,7 +63,7 @@ export default function App() {
           <Text style={styles.appButtonText}>Verificar cupon</Text>
         </TouchableOpacity>
       </View>
-      <ConsultaDB inputValue={inputValue} closeModal={closeModal} visible={modalVisible} />
+      <ConsultaDB setInputValue={setInputValue} inputValue={inputValue} closeModal={closeModal} visible={modalVisible} />
     </View>
   );
 }
