@@ -22,14 +22,10 @@ export default function App() {
     const formattedText = text.replace(/[^\d]/g, '');
 
     // Aplica el formato según la longitud
-    if (formattedText.length === 6) {
-      setInputValue(`${formattedText.slice(0, 1)}-${formattedText.slice(1)}`);
-    } else if (formattedText.length === 7) {
-      setInputValue(`${formattedText.slice(0, 2)}-${formattedText.slice(2)}`);
-    } else if (formattedText.length === 8) {
-      setInputValue(`${formattedText.slice(0, 3)}-${formattedText.slice(3)}`);
-    } else if (formattedText.length >= 9) {
-      setInputValue(`${formattedText.slice(0, 4)}-${formattedText.slice(4)}`);
+    if (formattedText.length > 5) {
+      const ultimosCinco = formattedText.slice(-5);
+      const primerosRestantes = formattedText.slice(0, formattedText.length - 5);
+      setInputValue(`${primerosRestantes}-${ultimosCinco}`);
     } else {
       setInputValue(formattedText);
     }
@@ -55,7 +51,7 @@ export default function App() {
             value={inputValue}
             onChangeText={formatInput}
             keyboardType="numeric"
-            maxLength={9}
+            maxLength={12}
             style={styles.inputCupon}
           />
         </View>
